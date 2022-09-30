@@ -1,8 +1,9 @@
+import { DiscoonectedHeader } from "../../components/DisconnectedHeader";
 
 export function Login() {
-    console.log("merda");
-    
     return (
-        <h1>s</h1>
+        <>
+            <DiscoonectedHeader />
+        </>
     );
 }
