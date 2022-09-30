@@ -53,4 +53,9 @@ export const ButtonSubmit = styled.button`
     margin-top: 30px;
     border-radius: 4px;
     border: none;
+
+    &:hover {
+        cursor: pointer;
+        background: ${(props) => props.theme['success']};
+    }
 `;
