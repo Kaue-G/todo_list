@@ -1,9 +1,9 @@
 import { DisconnectedHeader } from "../../components/DisconnectedHeader";
 
-export function Login() {
+export function Registration() {
     return (
         <>
-            <DisconnectedHeader buttonText="Não possui uma conta?"/>
+            <DisconnectedHeader buttonText="Já possui uma conta?" />
         </>
     );
 }

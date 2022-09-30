@@ -1,17 +1,21 @@
-import { Header } from "./styles";
+import { Button, Header, Logo } from "./styles";
 import logoTodo from "../../assets/logoTodo.png";
 import nomeTodo from "../../assets/nomeTodo.png";
 
-export function DiscoonectedHeader() {
+interface IDisconnectedHeaderProps {
+    buttonText: string;
+}
+
+export function DisconnectedHeader({ buttonText }: IDisconnectedHeaderProps) {
     return (
         <Header>
-            <div>
+            <Logo>
                 <img src={logoTodo} alt="" />
                 <img src={nomeTodo} alt="" />
-            </div>
-            <div>
-                <h4>Fala</h4>
-            </div>
+            </Logo>
+            <Button>
+                <button>{buttonText}</button>
+            </Button>
         </Header>
     );
 };
