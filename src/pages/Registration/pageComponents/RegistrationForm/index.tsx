@@ -71,7 +71,7 @@ export function RegistrationForm() {
         <FormContainer>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <h1>autenticação</h1>
+                    <h1>nova conta</h1>
                 </div>
 
                 <span>nome</span>
@@ -85,7 +85,7 @@ export function RegistrationForm() {
                 <BaseInput type="password" {...register('passwordConfirmation')} />
 
                 <ButtonSubmit type="submit">
-                    cadastro
+                    Cadastrar-se
                 </ButtonSubmit>
             </form>
         </FormContainer>

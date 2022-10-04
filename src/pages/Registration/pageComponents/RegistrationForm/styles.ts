@@ -51,9 +51,7 @@ export const ButtonSubmit = styled.button`
     width: 19.75rem;
     height: 2.625rem;
     
-    color: ${(props) => props.theme['white']};
-    text-transform: capitalize;
-    
+    color: ${(props) => props.theme['white']};    
 
     margin-top: 30px;
     border-radius: 4px;
