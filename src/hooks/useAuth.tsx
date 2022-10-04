@@ -53,7 +53,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
     async function signIn({ email, password }: ISingInProps) {
         try {
-            const response = await api.post("/sessions", {
+            const response = await api.post("/Auth/login", {
                 email,
                 password,
             });
@@ -68,7 +68,9 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
             return response.data.message;
         } catch (error: any) {
-            return error.response.data.message;
+            console.log(error.response.data.erros);
+            
+            return error.response.data.erros;
         }
     };
 

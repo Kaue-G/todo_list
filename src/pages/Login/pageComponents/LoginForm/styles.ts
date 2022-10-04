@@ -7,29 +7,35 @@ export const Formcontainer = styled.div`
 
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    /* align-items: center; */
+    
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+        div {
+            width: 19.75rem;
+            border-left: 7px solid ${(props) => props.theme['brand']};
+            padding-left: 10px;
 
-    div {
-        width: 19.75rem;
-        border-left: 7px solid ${(props) => props.theme['brand']};
-        padding-left: 10px;
+            h1 {
+                color: ${(props) => props.theme['white']};
+                text-transform: capitalize;
+                font-size: 22px;
+            }
+        }
 
-        h1 {
+        span {
+            width: 19.75rem;
+            margin-top: 20px;
+
             color: ${(props) => props.theme['white']};
             text-transform: capitalize;
-            font-size: 22px;
+            font-weight: 400;
+            font-size: 1rem;
         }
-    }
-
-    span {
-        width: 19.75rem;
-        margin-top: 20px;
-
-        color: ${(props) => props.theme['white']};
-        text-transform: capitalize;
-        font-weight: 400;
-        font-size: 1rem;
     }
 `;
 
