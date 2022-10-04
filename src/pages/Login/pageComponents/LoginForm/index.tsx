@@ -1,5 +1,6 @@
 import { FormEvent } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../../hooks/useAuth";
 import { BaseInput, ButtonSubmit, FormContainer } from "./styles";
@@ -7,6 +8,7 @@ import { BaseInput, ButtonSubmit, FormContainer } from "./styles";
 export function LoginForm() {
     const { register, watch } = useForm();
     const { signIn, loading, changeLoading } = useAuth();
+    const navigate = useNavigate();
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
@@ -26,6 +28,7 @@ export function LoginForm() {
         }
 
         changeLoading(false);
+        navigate("/home");
     };
 
     return (

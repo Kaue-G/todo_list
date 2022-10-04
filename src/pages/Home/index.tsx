@@ -1,6 +1,11 @@
+import { PageDefault } from "../../components/PageDefault";
 
 export function Home() {
     return (
-        <>Home</>
+        <>
+            <PageDefault>
+                <h2>sad</h2>
+            </PageDefault>
+        </>
     );
 }
