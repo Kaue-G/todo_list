@@ -6,19 +6,29 @@ interface ISingInProps {
     password: string;
 };
 
-interface User {
+interface IUser {
     id: string;
     name: string;
     email: string;
 }
 
+interface ISetLogged {
+    token: string;
+    user: {
+        id: string;
+        name: string;
+        email: string;
+    }
+}
+
 interface IAuthContextData {
-    user: User;
+    user: IUser;
     loading: boolean;
     isAuthenticated: boolean;
-    changeLoading(value: boolean): void;
     signIn({ email, password }: ISingInProps): Promise<string>;
     signOut(): void;
+    changeLoading(value: boolean): void;
+    setLogged({ token, user }: ISetLogged): void;
 };
 
 interface IAuthProviderProps {
@@ -32,7 +42,7 @@ const STORAGE_USER = "@TodoList:user"
 
 export function AuthProvider({ children }: IAuthProviderProps) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [user, setUser] = useState({} as User);
+    const [user, setUser] = useState({} as IUser);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -50,17 +60,18 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
         loadStorageDate();
     }, []);
-
+    
     async function signIn({ email, password }: ISingInProps) {
         try {
             const response = await api.post("/Auth/login", {
                 email,
                 password,
             });
-
-            setIsAuthenticated(true);
-            localStorage.setItem(STORAGE_TOKEN, response.data.accessToken);
-            localStorage.setItem(STORAGE_USER, JSON.stringify(response.data.user));
+            
+            setLogged({
+                token: response.data.accessToken,
+                user: response.data.user,
+            });
 
             setUser(response.data.user);
 
@@ -68,16 +79,21 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
             return response.data.message;
         } catch (error: any) {
-            console.log(error.response.data.erros);
-            
             return error.response.data.erros;
         }
     };
 
+    function setLogged({ token, user }: ISetLogged) {
+        localStorage.setItem(STORAGE_TOKEN, token);
+        localStorage.setItem(STORAGE_USER, JSON.stringify(user));
+
+        setIsAuthenticated(true);
+    }
+
     function signOut() {
         localStorage.removeItem(STORAGE_TOKEN);
         localStorage.removeItem(STORAGE_USER);
-        setUser({} as User);
+        setUser({} as IUser);
         setIsAuthenticated(false);
     };
 
@@ -94,6 +110,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
                 signIn,
                 signOut,
                 changeLoading,
+                setLogged,
             }}
         >
             {children}
