@@ -54,7 +54,10 @@ export const ButtonSubmit = styled.button`
     
     color: ${(props) => props.theme['white']};
     text-transform: capitalize;
-    text-align: -webkit-center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     margin-top: 30px;
     border-radius: 4px;
