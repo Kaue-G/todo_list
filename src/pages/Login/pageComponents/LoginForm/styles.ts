@@ -54,7 +54,7 @@ export const ButtonSubmit = styled.button`
     
     color: ${(props) => props.theme['white']};
     text-transform: capitalize;
-    
+    text-align: -webkit-center;
 
     margin-top: 30px;
     border-radius: 4px;
@@ -64,4 +64,21 @@ export const ButtonSubmit = styled.button`
         cursor: pointer;
         background: ${(props) => props.theme['success']};
     }
+
+    #loader {
+        height: 1rem;
+        width: 1rem;
+        border: 2px solid transparent;
+        border-bottom-color: #fff;
+        border-radius: 50%;
+        animation: rotateLoaderLogin 0.5s linear infinite;
+    }
+    @keyframes rotateLoaderLogin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
 `;

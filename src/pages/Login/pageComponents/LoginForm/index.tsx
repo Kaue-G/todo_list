@@ -10,13 +10,12 @@ export function LoginForm() {
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-        // changeLoading(true);
+        changeLoading(true);
 
         const messageResponse = await signIn({
             email: watch('email'),
             password: watch('password'),
         });
-        console.log(messageResponse);
 
         if (messageResponse !== undefined) {
             toast.error(messageResponse[0], {
@@ -26,7 +25,7 @@ export function LoginForm() {
             toast.dismiss();
         }
 
-        // changeLoading(false);
+        changeLoading(false);
     };
 
     return (
@@ -40,7 +39,7 @@ export function LoginForm() {
                 <span>password</span>
                 <BaseInput type="password" {...register('password')} />
                 <ButtonSubmit type="submit">
-                    entrar
+                    {!loading ? "entrar" : <div id="loader" />}
                 </ButtonSubmit>
             </form>
         </FormContainer>
