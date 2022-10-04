@@ -1,8 +1,8 @@
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../../hooks/useAuth";
-import { BaseInput, ButtonSubmit, Formcontainer } from "./styles";
+import { BaseInput, ButtonSubmit, FormContainer } from "./styles";
 
 export function LoginForm() {
     const { register, watch } = useForm();
@@ -30,7 +30,7 @@ export function LoginForm() {
     };
 
     return (
-        <Formcontainer>
+        <FormContainer>
             <form onSubmit={handleSubmit}>
                 <div>
                     <h1>autenticação</h1>
@@ -43,6 +43,6 @@ export function LoginForm() {
                     entrar
                 </ButtonSubmit>
             </form>
-        </Formcontainer>
+        </FormContainer>
     );
 }

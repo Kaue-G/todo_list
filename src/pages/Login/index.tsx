@@ -5,7 +5,7 @@ import { LoginContainer } from "./styles";
 export function Login() {
     return (
         <LoginContainer>
-            <DisconnectedHeader buttonText="Não possui uma conta?"/>
+            <DisconnectedHeader buttonText="Não possui uma conta?" buttonLink="/registration"/>
             <LoginForm />
         </LoginContainer>
     );
