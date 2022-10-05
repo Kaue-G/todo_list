@@ -1,8 +1,10 @@
-import { FooterSideBar, HeaderSideBar, MenuSideBar, SandwichMenu, SidebarContainer } from "./styles";
-import logoTodoWhite from "./../../../assets/logoTodoWhite.svg"
+import { FooterSideBar, HeaderSideBar, MenuItem, MenuSideBar, SandwichMenu, SidebarContainer } from "./styles";
 import { useAuth } from "../../../hooks/useAuth";
+import logoTodoWhite from "./../../../assets/logoTodoWhite.svg"
+import { MdList, MdInbox } from "react-icons/md";
+import { BiUserCircle } from "react-icons/bi";
 
-export function DesktopSidebar () {
+export function DesktopSidebar() {
     const { signOut } = useAuth();
 
     return (
@@ -12,10 +14,17 @@ export function DesktopSidebar () {
                 <SandwichMenu />
             </HeaderSideBar>
             <MenuSideBar>
-                <h2>menu 1</h2>
-                <h2>menu 2</h2>
+                <MenuItem>
+                    <MdInbox size={20} />
+                        tarefas
+                </MenuItem>
+                <MenuItem> 
+                    <MdList color="#202342" size={20} />
+                    tarefas
+                </MenuItem>
             </MenuSideBar>
             <FooterSideBar>
+                <BiUserCircle size={30} />
                 <h1>Gabriel user</h1>
                 <button onClick={signOut}>sair</button>
             </FooterSideBar>

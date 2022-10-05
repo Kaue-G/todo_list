@@ -29,9 +29,29 @@ export const MenuSideBar = styled.div`
     align-items: center;
 `;
 
+export const MenuItem = styled.button`
+    width: 216px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+
+    text-transform: capitalize;
+    color: ${(props) => props.theme['white']}; ;
+
+    background-color: blueviolet;
+
+`;
+
 export const FooterSideBar = styled.footer`
     width: 100%;
     height: 60px;
 
+    display: flex;
+    align-items: center;
     background-color: ${(props) => props.theme['secondary']};
 `;
