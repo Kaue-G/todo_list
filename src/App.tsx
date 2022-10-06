@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "styled-components";
+import { ShowSideBarProvider } from "./hooks/showSidebar";
 import { AuthProvider } from "./hooks/useAuth";
 import { Router } from "./routes";
 import { GlobalStyle } from "./styles/global";
@@ -13,7 +14,9 @@ function App() {
       <ToastContainer autoClose={5000}/>
       <BrowserRouter>
         <AuthProvider>
-          <Router />
+          <ShowSideBarProvider>
+            <Router />
+          </ShowSideBarProvider>
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>

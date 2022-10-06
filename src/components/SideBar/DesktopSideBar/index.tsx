@@ -1,32 +1,54 @@
-import { FooterSideBar, HeaderSideBar, MenuItem, MenuSideBar, SandwichMenu, SidebarContainer } from "./styles";
+import { FooterSideBar, HeaderSideBar, MenuItem, MenuSideBar, SandwichMenu, SidebarContainer, UserName } from "./styles";
 import { useAuth } from "../../../hooks/useAuth";
 import logoTodoWhite from "./../../../assets/logoTodoWhite.svg"
 import { MdList, MdInbox } from "react-icons/md";
 import { BiUserCircle } from "react-icons/bi";
+import { FiLogOut } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
+import { useShowSideBar } from "../../../hooks/showSidebar";
 
 export function DesktopSidebar() {
-    const { signOut } = useAuth();
-
+    const { user, signOut } = useAuth();
+    const { showMenu, showSideBar } = useShowSideBar();
+    
     return (
-        <SidebarContainer>
+        <SidebarContainer className={showMenu ? "show-menu": ""}>
             <HeaderSideBar>
                 <img src={logoTodoWhite} alt="" />
-                <SandwichMenu />
+                <SandwichMenu onClick={showSideBar}>
+                    <div className="line" id="line1"></div>
+                    <div className="line" id="line2"></div>
+                    <div className="line" id="line3"></div>
+                </SandwichMenu>
             </HeaderSideBar>
-            <MenuSideBar>
+            <MenuSideBar className={showMenu ? "show-menu" : ""}>
                 <MenuItem>
-                    <MdInbox size={20} />
-                        tarefas
+                    <NavLink to={"/home"}>
+                        <MdInbox size={25} />
+                        {showMenu ? "tarefas" : ""}
+                    </NavLink>
                 </MenuItem>
                 <MenuItem> 
-                    <MdList color="#202342" size={20} />
-                    tarefas
+                    <NavLink to={"/tarefas"}>
+                        <MdList size={25} />
+                        {showMenu ? "listas" : ""}
+                    </NavLink>
                 </MenuItem>
             </MenuSideBar>
             <FooterSideBar>
-                <BiUserCircle size={30} />
-                <h1>Gabriel user</h1>
-                <button onClick={signOut}>sair</button>
+                
+                {showMenu ? <>
+                    <BiUserCircle size={30} />
+                    <UserName>
+                        <h1>{user.name}</h1>
+                        <span>usuário</span>
+                    </UserName>
+                </>
+                : ""}
+                
+                <button onClick={signOut}>
+                    <FiLogOut size={25}/>
+                </button>
             </FooterSideBar>
         </SidebarContainer>
     );
