@@ -10,7 +10,7 @@ export const SidebarContainer = styled.div`
     transition: all 1.5s;
 
     &.show-menu{
-        width: 250px;
+        min-width: 250px;
 
         display: flex;
         align-items: center;

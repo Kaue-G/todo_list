@@ -5,5 +5,5 @@ export const PageContainer = styled.div`
     height: 100vh;
     display: flex;
 
-    background-color: aquamarine;
+    background-color: ${(props) => props.theme['background']};
 `;

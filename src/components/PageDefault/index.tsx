@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { DesktopSidebar } from "../SideBar/DesktopSideBar";
 import { PageContainer } from "./styles";
 
