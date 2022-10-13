@@ -5,14 +5,14 @@ import { MdList, MdInbox } from "react-icons/md";
 import { BiUserCircle } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
-import { useShowSideBar } from "../../../hooks/showSidebar";
+import { useShowSideBar } from "../../../contexts/ShowSidebar";
 
 export function DesktopSidebar() {
     const { user, signOut } = useAuth();
     const { showMenu, showSideBar } = useShowSideBar();
-    
+
     return (
-        <SidebarContainer className={showMenu ? "show-menu": ""}>
+        <SidebarContainer className={showMenu ? "show-menu" : ""}>
             <HeaderSideBar>
                 <img src={logoTodoWhite} alt="" />
                 <SandwichMenu onClick={showSideBar}>
@@ -28,7 +28,7 @@ export function DesktopSidebar() {
                         {showMenu ? "tarefas" : ""}
                     </NavLink>
                 </MenuItem>
-                <MenuItem> 
+                <MenuItem>
                     <NavLink to={"/tarefas"}>
                         <MdList size={25} />
                         {showMenu ? "listas" : ""}
@@ -36,7 +36,7 @@ export function DesktopSidebar() {
                 </MenuItem>
             </MenuSideBar>
             <FooterSideBar>
-                
+
                 {showMenu ? <>
                     <BiUserCircle size={30} />
                     <UserName>
@@ -44,10 +44,10 @@ export function DesktopSidebar() {
                         <span>usuário</span>
                     </UserName>
                 </>
-                : ""}
-                
+                    : ""}
+
                 <button onClick={signOut}>
-                    <FiLogOut size={25}/>
+                    <FiLogOut size={25} />
                 </button>
             </FooterSideBar>
         </SidebarContainer>
